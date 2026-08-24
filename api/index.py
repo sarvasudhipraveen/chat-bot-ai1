@@ -1,6 +1,10 @@
 import os
 from flask import Flask, request, jsonify, render_template_string
 from groq import Groq
+from dotenv import load_dotenv
+
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env'), override=True)
+load_dotenv(override=True)
 
 app = Flask(__name__)
 
@@ -103,7 +107,7 @@ def chat_api():
                 safe_messages.append({'role': role, 'content': content})
         client = Groq(api_key=api_key)
         completion = client.chat.completions.create(
-            model=os.environ.get('GROQ_MODEL', 'llama-3.1-8b-instant'),
+          model=os.environ.get('GROQ_MODEL', 'openai/gpt-oss-120b'),
             messages=safe_messages,
             temperature=0.7,
         )

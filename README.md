@@ -14,3 +14,5 @@ In Vercel Environment Variables add:
 GROQ_API_KEY = your_real_groq_api_key
 
 Then redeploy.
+
+For local development, the key is stored in `.env` and loaded automatically. Install dependencies with `pip install -r requirements.txt`, then run `python app.py`.
